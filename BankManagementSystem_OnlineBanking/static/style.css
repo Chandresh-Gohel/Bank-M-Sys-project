@@ -3,10 +3,12 @@ body{
   margin: 0;
   padding: 0;
   font-family: sans-serif;
-  background: url(bg.jpg) no-repeat;
+  background: url(back.jpg) no-repeat;
   background-size: cover;
 }
-.login-box{
+
+
+.box{
   width: 280px;
   position: absolute;
   top: 50%;
@@ -14,7 +16,7 @@ body{
   transform: translate(-50%,-50%);
   color: white;
 }
-.login-box h1{
+.box h1{
   float: left;
   font-size: 40px;
   border-bottom: 6px solid #4caf50;
@@ -27,7 +29,7 @@ body{
   font-size: 20px;
   padding: 8px 0;
   margin: 8px 0;
-  border-bottom: 1px solid #49ac4c;
+  border-bottom: 1px solid #4caf50;
 }
 .textbox i{
   width: 26px;
@@ -47,6 +49,7 @@ body{
 .btn{
   width: 100%;
   background: none;
+  background-color: #4caf50;
   border: 2px solid #4caf50;
   color: white;
   padding: 5px;

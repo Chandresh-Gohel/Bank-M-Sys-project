@@ -1,26 +1,45 @@
 {% load static %}
-
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
-  <head>
-    <meta charset="utf-8">
-    <title></title>
-    <link rel="stylesheet" href="{% static 'style.css' %}">
-  </head>
-  <body>
-<div class="login-box">
-  <h1>Login</h1>
-  <div class="textbox">
-    <i class="fas fa-user"></i>
-    <input type="text" placeholder="Username">
-  </div>
+<head>
+  <meta charset="utf-8">
+  <title></title>
+  <link rel="stylesheet" href="{% static 'style.css' %}">
+</head>
+<style type="text/css">
+::placeholder{
+    
+   color: darkgrey;
+   opacity: 10;
+ }
 
-  <div class="textbox">
-    <i class="fas fa-lock"></i>
-    <input type="password" placeholder="Password">
-  </div>
+ a:visited{
+   color:white;
+   background-color: black;
+ }
+ a:active{
+   color: green;
+   background-color: black;
 
-  <input type="button" class="btn" value="Sign in">
-</div>
-  </body>
+ }
+</style>
+<body>
+  <div class="box">
+    <h1>Login</h1>
+    <div class="textbox">
+      <i class="fas fa-user"></i>
+      <input type="text" placeholder="Username">
+    </div>
+
+    <div class="textbox">
+      <i class="fas fa-lock"></i>
+      <input type="password" placeholder="Password">
+    </div>
+
+    <input type="submit" class="btn" value="Sign in">
+    <br><br>
+    <a href="/UserRegistration"> If you don't have an account ? </a>
+
+  </div>
+</body>
 </html>

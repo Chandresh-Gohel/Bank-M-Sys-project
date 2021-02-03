@@ -1,0 +1,63 @@
+{% load static %}
+<html>
+<head>
+	<title>User Online Registration</title>
+	<link rel="stylesheet" href="{% static 'style.css' %}">
+</head>
+<style type="text/css">
+	::placeholder{
+
+		/*background-color: yellow;*/
+		color: darkgrey;
+		opacity: 10;
+	}
+</style>
+<body>
+	<form action = "userOnlineRegistration.html" method = "POST" id = "userOnlineRegForm">
+		<div class="box">
+
+			<!-- Account Holder Name :  -->
+			<div class="textbox">
+				<i class="fas fa-suitcase"></i><input type = "text" name = "accHoldName"  placeholder="Acc. Holder Name" required="required"/><br>
+			</div>
+			<br>
+
+			<!-- Account Number :  -->
+			<div class="textbox">
+				<i class="fas fa-id-card"></i><input type = "account" name ="userAccNumber"  placeholder="Acc. Number" required="required"/><br>
+			</div>
+			<br>
+
+			<!-- IFSC Code:  -->
+			<div class="textbox">
+				<i class="fas fa-code"></i><input type = "text" name = "userIFSC"  placeholder="IFSC CODE" required="required"/><br>
+			</div>
+			<br>
+
+			<!-- Username : -->
+			<div class="textbox">
+				<i class="fas fa-user"></i>
+				<input type = "text" name = "userName" id = "usrNameOReg" placeholder="Set UserName" required="required"/><br>
+			</div>
+			<br>
+
+			<!-- Password :  -->
+			<div class="textbox">
+				<i class="fas fa-lock"></i>
+				<input type = "password" name = "userPassword" id ="userPasswordOReg" placeholder="Set password" minlength = "6" required="required"><br>
+			</div>
+			<br>
+
+			<!-- Confirm Password :  -->
+			<div class="textbox">
+				<i class="fas fa-lock"></i>
+				<input type = "password" name = "userConfPassword" id ="userConfPasswordOReg" placeholder="Confirm password" minlength = "6" required="required">
+			</div>
+			<br>
+			<input type = "submit" class="btn" name= "submit" value = "SUBMIT FORM"><br>
+			<input type = "reset"  class="btn" name= "reset"  value = "RESET FORM">
+
+		</div>
+	</form>
+</body>
+</html>
