@@ -13,9 +13,10 @@
 	}
 </style>
 <body>
-	<form action = "userOnlineRegistration.html" method = "POST" id = "userOnlineRegForm">
+	<form action = "UserRegistration" method = "POST" id = "userOnlineRegForm">
+		{% csrf_token %}
+		
 		<div class="box">
-
 			<!-- Account Holder Name :  -->
 			<div class="textbox">
 				<i class="fas fa-suitcase"></i><input type = "text" name = "accHoldName"  placeholder="Acc. Holder Name" required="required"/><br>
@@ -37,21 +38,21 @@
 			<!-- Username : -->
 			<div class="textbox">
 				<i class="fas fa-user"></i>
-				<input type = "text" name = "userName" id = "usrNameOReg" placeholder="Set UserName" required="required"/><br>
+				<input type = "text" name = "username" id = "usrNameOReg" placeholder="Set UserName" required="required"/><br>
 			</div>
 			<br>
 
 			<!-- Password :  -->
 			<div class="textbox">
 				<i class="fas fa-lock"></i>
-				<input type = "password" name = "userPassword" id ="userPasswordOReg" placeholder="Set password" minlength = "6" required="required"><br>
+				<input type = "password" name = "password" id ="userPasswordOReg" placeholder="Set password" minlength = "6" required="required"><br>
 			</div>
 			<br>
 
 			<!-- Confirm Password :  -->
 			<div class="textbox">
 				<i class="fas fa-lock"></i>
-				<input type = "password" name = "userConfPassword" id ="userConfPasswordOReg" placeholder="Confirm password" minlength = "6" required="required">
+				<input type = "password" name = "ConfiPassword" id ="userConfPasswordOReg" placeholder="Confirm password" minlength = "6" required="required">
 			</div>
 			<br>
 			<input type = "submit" class="btn" name= "submit" value = "SUBMIT FORM"><br>

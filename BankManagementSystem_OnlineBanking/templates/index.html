@@ -24,22 +24,26 @@
  }
 </style>
 <body>
-  <div class="box">
-    <h1>Login</h1>
-    <div class="textbox">
-      <i class="fas fa-user"></i>
-      <input type="text" placeholder="Username">
+  <form action="index" method="POST">
+    {% csrf_token %}
+    <div class="box">
+      <h1>Login</h1>
+      <div class="textbox">
+        <i class="fas fa-user"></i>
+        <input type="text" name="username" placeholder="Username" required>
+      </div>
+  
+      <div class="textbox">
+        <i class="fas fa-lock"></i>
+        <input type="password" name="password" placeholder="Password" required>
+      </div>
+  
+      <input type="submit" class="btn" name="login" value="Log in">
+      <br><br>
+      <a href="/UserRegistration"> If you don't have an account ? </a>
+  
     </div>
-
-    <div class="textbox">
-      <i class="fas fa-lock"></i>
-      <input type="password" placeholder="Password">
-    </div>
-
-    <input type="submit" class="btn" value="Sign in">
-    <br><br>
-    <a href="/UserRegistration"> If you don't have an account ? </a>
-
-  </div>
+  </form>
+  
 </body>
 </html>
