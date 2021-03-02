@@ -1,0 +1,20 @@
+{% extends "firstdbtest/index.html" %}
+
+{% block content %}
+<h1>Student List</h1>
+{% if student_list %}
+<ul>
+{% for student in student_list %}
+<li>
+name: {{ student.name }}<br>
+({{student.dob}})
+<br>
+<br>
+</li>
+{% endfor %}
+</ul>
+{% else %}
+<p>There are no students registered.</p>
+{% endif %}
+<p> Click <a href="new">here</a> to add new record. </p>
+{% endblock %}
