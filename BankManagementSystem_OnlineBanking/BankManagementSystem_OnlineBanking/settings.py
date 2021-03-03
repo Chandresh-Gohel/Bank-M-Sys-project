@@ -38,7 +38,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'UserLogin',
+    'UserLogin.apps.UserloginConfig',
+    'Accounts.apps.AccountsConfig',
 ]
 
 MIDDLEWARE = [
@@ -46,6 +47,7 @@ MIDDLEWARE = [
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
+    # 'django.middleware.csrf.CsrfResponseMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
@@ -76,14 +78,14 @@ WSGI_APPLICATION = 'BankManagementSystem_OnlineBanking.wsgi.application'
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
 DATABASES = {
-    # 'default': {
-    #     'ENGINE': 'django.db.backends.mysql',
-    #     'NAME': 'sys',
-    #     'USER': 'root',
-    #     'PASSWORD': '#kenil#',
-    #     'HOST': 'localhost',
-    #     'PORT' : '3306',
-    # }
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'test_bank',
+        'USER': 'root',
+        'PASSWORD': '#kenil#',
+        'HOST': 'localhost',
+        'PORT' : '3306',
+    }
 }
 
 

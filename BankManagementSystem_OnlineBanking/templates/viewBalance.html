@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{%block button %}
+
+<div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav">
+        <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="/Accounts/home1">Home</a>
+        </li>
+    </ul>
+</div>
+{% endblock %}
+
+{%block message-popup%}
+<div class="alert alert-success alert-dismissible fade show" role="alert" align="center">
+    <strong>Hey {{Name}},</strong> makesure that you have sufficient balance in your account for using services.
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
+{% endblock%}
+
+{% block content %}
+<div align="center" class="shadow-lg p-3 mb-5 bg-body rounded" style="margin-top: 220px;"><b><h5>Hey, Your A/C No:- {{accountNo}}.</h5><h3>Your A/C Balance is 
+    ₹{{accBalance}} /-</h3></b>
+</div>
+<div align="center"><button  type="button" class="btn btn-dark" onclick="window.location.href='/Accounts/home'">Back</button></div>
+{% endblock %}

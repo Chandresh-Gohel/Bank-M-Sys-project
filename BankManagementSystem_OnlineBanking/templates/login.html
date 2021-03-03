@@ -1,0 +1,52 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="utf-8">
+  <title></title>
+  <link rel="stylesheet" href="{% static 'style.css' %}">
+</head>
+<style type="text/css">
+::placeholder{
+    
+   color: darkgrey;
+   opacity: 10;
+ }
+.button{
+  width: 100%;
+  background: none;
+  background-color: #5caf4c;
+  border: 2px solid #ebdbd2;
+  color: white;
+  padding: 5px;
+  font-size: 18px;
+  cursor: pointer;
+  margin: 12px 0;
+  border-radius: 21px;
+}
+
+</style>
+<body>
+  <form action="login" method="POST">
+    {% csrf_token %}
+    <div class="box">
+      <h1>Login</h1>
+      <div class="textbox">
+        <i class="fas fa-user"></i>
+        <input type="text" name="username" placeholder="Username" required>
+      </div>
+  
+      <div class="textbox">
+        <i class="fas fa-lock"></i>
+        <input type="password" name="password" placeholder="Password" required>
+      </div>
+  
+      <input type="submit" class="button" name="login" value="Log in"><br>
+
+      <button class="button" onclick="window.location.href='/UserRegistration';">Register into System app</button>
+      <button class="button" onclick="window.location.href='/CreateAccount';">Open Your Bank A/C</button>
+
+    </div>
+  </form>
+</body>
+</html>

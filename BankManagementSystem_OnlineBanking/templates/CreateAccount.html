@@ -1,0 +1,78 @@
+{% load static %}
+<html>
+<head>
+	<title>Create Bank Account</title>
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+<style>
+    ::placeholder{
+    
+        color: darkgrey;
+        opacity: 10;
+      }
+    .button {
+		width: 100%;
+		background: none;
+		background-color: #5caf4c;
+		border: 2px solid #ebdbd2;
+		color: white;
+		padding: 5px;
+		font-size: 18px;
+		cursor: pointer;
+		margin: 12px 0;
+		border-radius: 20px;
+	}
+.textAdd{
+    background: none;
+    color: white;
+    font-size: 18px;
+}
+</style>
+</head>
+	<body>
+        <form action = "CreateAccount" method = "POST" >
+            {% csrf_token %}
+            
+            <div class="box"  align="center">
+                <h1>Open Your Bank Account</h1>
+                <div class="textbox">
+                    <i class="fas fa-user"></i></i><input type = "text" name = "fname"  placeholder="first name" required="required"/><br>
+                </div>
+                <br>
+    
+               
+                <div class="textbox">
+                    <i class="fas fa-user"></i></i><input type = "text" name ="lname"  placeholder="Last name" required="required"/><br>
+                </div>
+                <br>
+    
+               
+                <div class="textbox">
+                    <i class="fas fa-code"></i><input type = "email" name = "UserEmail"  placeholder="Enter Email Address" required="required"/><br>
+                </div>
+                <br>
+    
+                
+                <div class="textbox">
+                    <i class="fas fa-user"></i>
+                    <input type = "number" name = "mobileNo"  placeholder="Enter MobileNo" required="required"/><br>
+                </div>
+                <br>
+    
+                
+                <div class="textbox">
+                    <i class="fas fa-lock"></i>
+                    <input type = "number" name = "AadharCardNo" placeholder="Enter AadharCard No" required="required"><br>
+                </div>
+
+                <div class="textbox">
+                    <i class="fas fa-lock"></i>
+                    <textarea  class="textAdd" name="HomeAddress" style="margin: 0px; width: 232px; height: 87px;" placeholder="Enter your address"></textarea>
+                </div>
+                
+                <input type = "submit" class="button" name= "submit" value = "Create Account"><br>
+                <input type = "reset"  class="button" name= "reset"  value = "RESET FORM">
+    
+            </div>
+        </form>
+    </body>
+</html>

@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{%block message-popup%}
+<div align="center" class="alert alert-success alert-dismissible fade show" role="alert">
+  <strong>Welcome to Yo Bank.</strong> You should notedown your <strong>A/C</strong> Number properly.
+  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
+{% endblock%}
+
+{% block content %}
+<div align="center" class="shadow-lg p-3 mb-5 bg-body rounded" style="margin-top: 210px;"><b>Hi {{name}}, Welcome to Yo Bank.</br><h4>Your Account number is <u>{{AccountNo}}</u></h4> IEFC Code:- ABC1234 </b></div>
+<div align="center"><button type="button" class="btn btn-dark" onclick="window.location.href='/Accounts/delsession'">Back</button></div>
+{% endblock %}
