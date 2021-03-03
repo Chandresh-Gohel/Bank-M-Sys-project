@@ -1,5 +1,37 @@
-<html>
-    <body>
-        hello world
-    </body>
-</html>
+{% extends 'base.html' %}
+
+{%block button %}
+
+<div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav me-auto">
+        <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="/Accounts/home">Home</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#">Contect us</a>
+        </li>
+       
+    </ul>
+    <ul class="navbar-nav mr-auto">
+        <li class="nav-item">
+            <button type="button" class="btn btn-light">Log out</button>
+        </li>
+
+    </ul>
+</div>
+{% endblock %}
+
+{% block functionality %}
+
+<div align="center" style="margin-top: 245px;">
+    <button type="button" class="btn btn-primary" onclick="window.location.href='/Accounts/viewBalance'"
+      style="width: 140px; height: 100px;">View Balance</button>
+    <button type="button" class="btn btn-secondary" onclick="window.location.href='/Accounts/makeTransaction'" style="width: 140px; height: 100px;">Make Transaction</button>
+    <button type="button" class="btn btn-success" style="width: 140px; height: 100px;"">View Transaction History</button>
+        <!-- <button type=" button" class="btn btn-danger">Danger</button>
+    <button type="button" class="btn btn-warning">Warning</button>
+    <button type="button" class="btn btn-info">Info</button>
+    <button type="button" class="btn btn-dark">Dark</button> -->
+
+  </div>
+{% endblock %}

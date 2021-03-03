@@ -12,19 +12,22 @@
    color: darkgrey;
    opacity: 10;
  }
+.button{
+  width: 100%;
+  background: none;
+  background-color: #5caf4c;
+  border: 2px solid #ebdbd2;
+  color: white;
+  padding: 5px;
+  font-size: 18px;
+  cursor: pointer;
+  margin: 12px 0;
+  border-radius: 21px;
+}
 
- a:visited{
-   color:white;
-   background-color: black;
- }
- a:active{
-   color: green;
-   background-color: black;
-
- }
 </style>
 <body>
-  <form action="index" method="POST">
+  <form action="login" method="POST">
     {% csrf_token %}
     <div class="box">
       <h1>Login</h1>
@@ -38,12 +41,12 @@
         <input type="password" name="password" placeholder="Password" required>
       </div>
   
-      <input type="submit" class="btn" name="login" value="Log in">
-      <br><br>
-      <a href="/UserRegistration"> If you don't have an account ? </a>
-  
+      <input type="submit" class="button" name="login" value="Log in"><br>
+
+      <button class="button" onclick="window.location.href='/UserRegistration';">Register into System app</button>
+      <button class="button" onclick="window.location.href='/CreateAccount';">Open Your Bank A/C</button>
+
     </div>
   </form>
-  
 </body>
 </html>

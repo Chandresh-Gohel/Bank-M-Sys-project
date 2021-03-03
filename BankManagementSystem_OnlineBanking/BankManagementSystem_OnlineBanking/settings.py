@@ -38,8 +38,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'UserLogin',
-    'Accounts',
+    'UserLogin.apps.UserloginConfig',
+    'Accounts.apps.AccountsConfig',
 ]
 
 MIDDLEWARE = [
@@ -80,7 +80,7 @@ WSGI_APPLICATION = 'BankManagementSystem_OnlineBanking.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'django_system',
+        'NAME': 'test_bank',
         'USER': 'root',
         'PASSWORD': '#kenil#',
         'HOST': 'localhost',
