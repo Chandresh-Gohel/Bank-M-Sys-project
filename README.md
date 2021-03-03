@@ -1,9 +1,7 @@
-# Python Lab
+# Project
 
-HELLO_WORLD     DONE  : 21/JAN
+Userlogin Done
 
-DBTEST          DONE  : 02/FEB
+Manage Accounts Done
 
-LOGIN MODULE    DONE  : 20/FEB
-
-CRUDE           DONE  : 01/MAR
+Manage Transaction "OnGoing"
