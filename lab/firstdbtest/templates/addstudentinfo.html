@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% block content %}
+{% if form.errors %}
+<p class="error"> Invalid Student info </p>
+
+{% endif %}
+<form action="/firstdbtest/addstudentinfo/" method = "post">{% csrf_token %}
+<label for="studentname">Student Name : </label>
+<input type="text" name = "studentname" value = "" id="studentname">
+<label for="birthdate"> Birth Date:</label>
+<input type="date" name="birthdate" value="" id="birthdate">
+<input type="submit" value="Enter"/>
+</form>
+<p> Click <a href="/firstdbtest/students/"</a> to view student records. </p>
+{% endblock %}
