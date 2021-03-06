@@ -20,7 +20,11 @@ def login(request):
     else:
         return render(request,'login.html')
  
- 
+def logout(request):
+    auth.logout(request)
+    return render(request,'login.html')
+
+
 def register(request):
     if request.method=='POST':
         userAccNumber=request.POST['userAccNumber']
@@ -38,6 +42,7 @@ def register(request):
                     user.username=username
                     user.set_password(password)
                     user.save()
+                    return render(request,'login.html')
             else:
                 print("There is no Account with this Account Number")
         else:

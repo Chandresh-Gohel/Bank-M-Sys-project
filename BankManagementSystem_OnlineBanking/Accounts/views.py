@@ -3,6 +3,7 @@ from django.contrib.auth.models import User,auth
 from django.http import HttpResponse
 from django.contrib import messages
 from UserLogin.models import details
+from Accounts.models import transaction
 
 # Create your views here.
 
@@ -31,6 +32,34 @@ def viewBalance(request):
     return render(request,'viewBalance.html',userdata)
 
 def makeTransaction(request):
+    if request.method=='POST':
+        beneficiaryName = request.POST['BeneficiaryName']
+        BeneficiaryAccountNumber = request.POST['AccountNumber']
+        ReAccountNumber = request.POST['ReAccountNumber']
+        TransactionAmount = int(request.POST['TransactionAmount'])
+        if (BeneficiaryAccountNumber==ReAccountNumber):
+            AccountHolder = details.objects.get(user_id=request.user.id)
+            beneficiary = details.objects.get(accountNo=BeneficiaryAccountNumber)
+
+            if(int(AccountHolder.accBalance) > 0 ):    
+                AccountHolder.accBalance = int(AccountHolder.accBalance - TransactionAmount)
+                AccountHolder.save()
+                beneficiary.accBalance = int(beneficiary.accBalance + TransactionAmount)
+                beneficiary.save()
+                print(AccountHolder.accBalance)
+                print(beneficiary.accBalance)
+
+                Transaction1 = transaction.objects.create(accountNumber=AccountHolder.accountNo,Name=AccountHolder.name,TransactionID="xyx",Amount=-TransactionAmount,user_id=beneficiary.user_id)
+                Transaction1.save()
+                Transaction2 = transaction.objects.create(accountNumber=beneficiary.accountNo,Name=beneficiary.name,TransactionID="xyx",Amount=TransactionAmount,user_id=request.user.id)
+                Transaction2.save()
+            else:
+                print("No sufficient Balance in Your Account")
+        else:
+            print("Account number doesn't match with eachother")
+    else:
+        print("At first time")
+
     return render(request,'makeTransaction.html')
 
 
