@@ -10,5 +10,5 @@ urlpatterns=[
     path('AccNoDisplay',views.AccNoDisplay,name='AccNoDisplay'),
     path('delsession',views.delsession,name='delsession'),
     path('viewBalance',views.viewBalance,name='viewBalance'),
-    path('makeTransaction',views.makeTransaction,name='makeTransaction')
+    path('makeTransaction',views.makeTransaction,name='makeTransaction'),
 ]

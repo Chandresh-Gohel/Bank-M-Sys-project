@@ -15,16 +15,14 @@ class Migration(migrations.Migration):
 
     operations = [
         migrations.CreateModel(
-            name='details',
+            name='transaction',
             fields=[
                 ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('name', models.CharField(max_length=30)),
-                ('mobileNo', models.BigIntegerField()),
-                ('homeAddress', models.TextField()),
-                ('accountNo', models.BigIntegerField(unique=True)),
-                ('AadharNo', models.BigIntegerField(unique=True)),
-                ('IFSC_code', models.CharField(default='ABC1234', max_length=7)),
-                ('accBalance', models.BigIntegerField(default=0)),
+                ('accountNumber', models.BigIntegerField()),
+                ('Name', models.CharField(max_length=25)),
+                ('TransactionID', models.CharField(max_length=12)),
+                ('Amount', models.IntegerField()),
+                ('date', models.DateField(auto_now_add=True)),
                 ('user', models.OneToOneField(on_delete=django.db.models.deletion.CASCADE, to=settings.AUTH_USER_MODEL)),
             ],
         ),

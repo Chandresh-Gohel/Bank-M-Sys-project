@@ -15,8 +15,9 @@ class details(models.Model):
     accBalance = models.BigIntegerField( default=0 )
 
 
-class Transaction(models.Model):
-    user = models.OneToOneField(User,on_delete=models.CASCADE)
-    accountNo = models.BigIntegerField()
-    TransactionID = models.CharField(max_length=12)
-    Amount = models.IntegerField()
+# class Transaction(models.Model):
+#     user = models.OneToOneField(User,on_delete=models.CASCADE)
+#     accountNo = models.BigIntegerField()
+#     TransactionID = models.CharField(max_length=12)
+#     Amount = models.IntegerField()
+#     time = models.DateTimeField(auto_now_add=True)
