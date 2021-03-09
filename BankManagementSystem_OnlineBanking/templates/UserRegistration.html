@@ -2,7 +2,7 @@
 <html>
 
 <head>
-	<title>User Online Registration</title>
+	<title>User Registration</title>
 	<link rel="stylesheet" href="{% static 'style.css' %}">
 </head>
 <style type="text/css">
@@ -34,6 +34,8 @@
 		<div class="box">
 			<h1>Regisration</h1>
 			<!-- Account Holder Name :  -->
+
+			
 			<div class="textbox">
 				<i class="fas fa-suitcase"></i><input type="text" name="accHoldName" placeholder="Acc. Holder Name"
 					required="required" /><br>
@@ -50,7 +52,7 @@
 			<!-- IFSC Code:  -->
 			<div class="textbox">
 				<i class="fas fa-code"></i><input type="text" name="userIFSC" placeholder="IFSC CODE"
-					required="required" /><br>
+					 required="required" /><br>
 			</div>
 			<br>
 
@@ -58,14 +60,14 @@
 			<div class="textbox">
 				<i class="fas fa-user"></i>
 				<input type="text" name="username" id="usrNameOReg" placeholder="Set UserName"
-					required="required" /><br>
+				maxlength="12" minlength="6" required="required" pattern="[a-z]+[0-9]*" /><br>
 			</div>
 			<br>
 
 			<!-- Password :  -->
 			<div class="textbox">
 				<i class="fas fa-lock"></i>
-				<input type="password" name="password" id="userPasswordOReg" placeholder="Set password" minlength="6"
+				<input type="password" name="password" id="userPasswordOReg" placeholder="Set password" maxlength="10" minlength="6"
 					required="required"><br>
 			</div>
 			<br>
@@ -74,9 +76,14 @@
 			<div class="textbox">
 				<i class="fas fa-lock"></i>
 				<input type="password" name="ConfiPassword" id="userConfPasswordOReg" placeholder="Confirm password"
-					minlength="6" required="required">
+				maxlength="10" minlength="6" required="required">
 			</div>
 			<br>
+			{% for msg in messages %}
+			<div align="center">
+				<font style="color: #deffd9;">{{msg}}</font>
+			</div>
+			{% endfor %}
 			<input type="submit" class="button" name="submit" value="SUBMIT"><br>
 			<input type="reset" class="button" name="reset" value="RESET">
 

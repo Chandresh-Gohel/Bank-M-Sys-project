@@ -17,9 +17,26 @@
 <br>
 <h3 align="center">Beneficiary Details</h3>
 <hr>
-<div class="container" style="width: 400px;">
+
+
+<div class="container" style="width: 450px;">
+
   <form action="/Accounts/makeTransaction" method="POST">
     {% csrf_token %}
+
+    {% for msg in messages %}
+      {% if 'safe' in msg.tags %}
+        <div align="center"><h5><strong>{{msg|safe}}</strong></h5><br></div>
+      {% else %}
+        <div align="center">
+        <h5><strong>
+        <font style="color: rgb(233, 57, 57);">{{msg}}</font>
+        </strong></h5><br>
+        </div>
+      {% endif %}
+    {% endfor %}
+<!-- <font style="color: rgb(75, 224, 75);"></font> -->
+
     <div class="form-group">
       <label for="BeneficiaryName">Beneficiary Name</label>
       <input type="text" name="BeneficiaryName" class="form-control" id="BeneficiaryName"
@@ -46,9 +63,36 @@
       <input type="checkbox" class="form-check-input" id="exampleCheck1">
       <label class="form-check-label" for="exampleCheck1">Accept Term & Condition</label>
     </div><br>
-    <div align="center"><button type="submit" class="btn btn-primary" align="center">Make Payment</button></div>
+
+    <div align="center">
+      <button type="submit" class="btn btn-primary">Make Payment</button>
+    </div>
+
+
+    <!-- Modal -->
+    <!-- <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="staticBackdropLabel">Confirmation</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        Are you sure, Do you want to make this Transaction ?
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">No</button>
+        <button type="submit" class="btn btn-primary">Yes</button>
+      </div>
+    </div>
+  </div>
+</div> -->
 
   </form>
+
+  <!-- <div align="center">
+    <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop" align="center">Make Payment</button>
+  </div> -->
 </div>
 
 {% endblock %}

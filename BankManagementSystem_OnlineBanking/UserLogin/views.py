@@ -15,14 +15,14 @@ def login(request):
             auth.login(request,user)
             return redirect('/Accounts/home')
         else:
-            messages.info(request,'invalid credentials')
+            messages.info(request,'Username or Password is incorrect')
             return redirect('login')
     else:
         return render(request,'login.html')
  
 def logout(request):
     auth.logout(request)
-    return render(request,'login.html')
+    return redirect('/')
 
 
 def register(request):
@@ -37,16 +37,25 @@ def register(request):
             if details.objects.filter(accountNo=userAccNumber,IFSC_code=userIFSC).exists():
                 u = details.objects.get(accountNo=userAccNumber,IFSC_code=userIFSC)
                 user = User.objects.get(id=u.user_id)
-                key = request.session['key']
+                # key = request.session['key']
+                key = str(user.first_name+str(u.AadharNo)+user.last_name)
+                print(user.first_name+str(u.AadharNo)+user.last_name)
                 if user.username==key:
-                    user.username=username
-                    user.set_password(password)
-                    user.save()
-                    return render(request,'login.html')
+                    try:
+                        uname = User.objects.get(username=username)
+                        print(uname)
+                        messages.info(request,"This Username is alredy taken")  
+                    except User.DoesNotExist:
+                        user.username=username
+                        user.set_password(password)
+                        user.save()
+                        return render(request,'login.html')
+                else:
+                    messages.info(request,"You can not alter your username more than once.")
             else:
-                print("There is no Account with this Account Number")
+                messages.info(request,"No Account Found!..")
         else:
-            print("Password doesn't matched")
+            messages.info(request,"Password doesn't matched with each other!")
     return render(request,'UserRegistration.html')
 
 def create_AccountNo():
