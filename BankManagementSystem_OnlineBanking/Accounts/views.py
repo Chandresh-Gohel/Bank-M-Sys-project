@@ -31,6 +31,7 @@ def viewBalance(request):
     userdata = {'accBalance':accBalance,'accountNo':accountNo,'Name':Name}
     return render(request,'viewBalance.html',userdata)
 
+
 def makeTransaction(request):
     if request.method=='POST':
         beneficiaryName = request.POST['BeneficiaryName']
@@ -39,28 +40,34 @@ def makeTransaction(request):
         TransactionAmount = int(request.POST['TransactionAmount'])
         if (BeneficiaryAccountNumber==ReAccountNumber):
             AccountHolder = details.objects.get(user_id=request.user.id)
-            beneficiary = details.objects.get(accountNo=BeneficiaryAccountNumber)
+            beneficiary = details.objects.filter(accountNo=BeneficiaryAccountNumber).exists()
+            print("+*+",beneficiary)
+            if beneficiary is not False:
+                beneficiary = details.objects.get(accountNo=BeneficiaryAccountNumber)
+                if(int(AccountHolder.accBalance) > 0 ):    
+                    AccountHolder.accBalance = int(AccountHolder.accBalance - TransactionAmount)
+                    AccountHolder.save()
+                    beneficiary.accBalance = int(beneficiary.accBalance + TransactionAmount)
+                    beneficiary.save()
+                    print(AccountHolder.accBalance)
+                    print(beneficiary.accBalance)
 
-            if(int(AccountHolder.accBalance) > 0 ):    
-                AccountHolder.accBalance = int(AccountHolder.accBalance - TransactionAmount)
-                AccountHolder.save()
-                beneficiary.accBalance = int(beneficiary.accBalance + TransactionAmount)
-                beneficiary.save()
-                print(AccountHolder.accBalance)
-                print(beneficiary.accBalance)
-
-                Transaction1 = transaction.objects.create(accountNumber=AccountHolder.accountNo,Name=AccountHolder.name,TransactionID="xyx",Amount=-TransactionAmount,user_id=beneficiary.user_id)
-                Transaction1.save()
-                Transaction2 = transaction.objects.create(accountNumber=beneficiary.accountNo,Name=beneficiary.name,TransactionID="xyx",Amount=TransactionAmount,user_id=request.user.id)
-                Transaction2.save()
+                    Transaction1 = transaction.objects.create(accountNumber=AccountHolder.accountNo,Name=AccountHolder.name,TransactionID="xyx",Amount=-TransactionAmount,user_id=beneficiary.user_id)
+                    Transaction1.save()
+                    Transaction2 = transaction.objects.create(accountNumber=beneficiary.accountNo,Name=beneficiary.name,TransactionID="xyx",Amount=TransactionAmount,user_id=request.user.id)
+                    Transaction2.save()
+                    messages.success(request,'<font style="color: rgb(75, 224, 75);">Your Transaction complete successful</font>', extra_tags='safe')
+                    return redirect('/Accounts/makeTransaction')
+                else:
+                    return redirect('/Accounts/viewBalance')
             else:
-                print("No sufficient Balance in Your Account")
+                messages.info(request,"May some details>(i.e beneficiary A/C) is wrong")
+                return redirect('/Accounts/makeTransaction')
         else:
-            print("Account number doesn't match with eachother")
+            messages.info(request,"Account number doesn't match with eachother")
+            return redirect('/Accounts/makeTransaction')
     else:
-        print("At first time")
-
-    return render(request,'makeTransaction.html')
+        return render(request,'makeTransaction.html')
 
 
 def delsession(request):
