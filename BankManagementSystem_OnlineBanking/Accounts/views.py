@@ -52,9 +52,9 @@ def makeTransaction(request):
                     print(AccountHolder.accBalance)
                     print(beneficiary.accBalance)
 
-                    Transaction1 = transaction.objects.create(accountNumber=AccountHolder.accountNo,Name=AccountHolder.name,TransactionID="xyx",Amount=-TransactionAmount,user_id=beneficiary.user_id)
+                    Transaction1 = transaction.objects.create(accountNumber=AccountHolder.accountNo,Name=AccountHolder.name,TransactionID="xyx",TransactionAmount=-TransactionAmount,Balance=AccountHolder.accBalance ,user_id=beneficiary.user_id)
                     Transaction1.save()
-                    Transaction2 = transaction.objects.create(accountNumber=beneficiary.accountNo,Name=beneficiary.name,TransactionID="xyx",Amount=TransactionAmount,user_id=request.user.id)
+                    Transaction2 = transaction.objects.create(accountNumber=beneficiary.accountNo,Name=beneficiary.name,TransactionID="xyx",TransactionAmount=TransactionAmount,Balance=beneficiary.accBalance,user_id=request.user.id)
                     Transaction2.save()
                     messages.success(request,'<font style="color: rgb(75, 224, 75);">Your Transaction complete successful</font>', extra_tags='safe')
                     return redirect('/Accounts/makeTransaction')

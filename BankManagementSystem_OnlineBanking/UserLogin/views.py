@@ -67,6 +67,7 @@ def createAccount(request):
         first_name = request.POST['fname']
         last_name = request.POST['lname']
         fullname=first_name+' '+last_name
+        BirthDate = request.POST['BirthDate']
         mobileNo = request.POST['mobileNo']
         emailAddress = request.POST['UserEmail']
         AadharCardNo = request.POST['AadharCardNo']
@@ -84,7 +85,7 @@ def createAccount(request):
 
         user = User.objects.create_user(username=key,password=key,email=emailAddress,first_name=first_name,last_name=last_name)
         user.save()
-        OtherDetails = details(user=user,accountNo=AccountNo,name=fullname,mobileNo=mobileNo,AadharNo=AadharCardNo,homeAddress=homeAddress)
+        OtherDetails = details(user=user,accountNo=AccountNo,name=fullname,BirthDate=BirthDate,mobileNo=mobileNo,AadharNo=AadharCardNo,homeAddress=homeAddress)
         OtherDetails.save()
         request.session['name']=fullname
         request.session['accNo']=AccountNo
