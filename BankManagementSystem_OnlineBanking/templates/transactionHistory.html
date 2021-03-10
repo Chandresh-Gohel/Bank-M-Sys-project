@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+{% block title %}Transactions{% endblock %}
+
+{% block button %}
+<li class="nav-item">
+  <a class="nav-link" href="#">Services</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/Accounts/giveIssue">Contact us</a>
+</li>
+{% endblock %}
+{% block functionality %}
+<br/>
+{% if history|length < 1 %}
+	<h3 style="text-align: center;padding-top:5%">You have not done any transaction yet</h3>
+{%else%}
+	<h3 align="center">Welcome {{Username}}</h3>
+	<br/>
+	<p align="center">Your Transactions are as per below</p>
+	<div class="container" style="width: 100%;">
+	<table class="table">
+		<thead>
+			<tr>
+				<!-- <th style="text-align:center">Your Account Number</th> -->
+				<th class="table-info" style="text-align:center">Date</th>
+				<th class="table-info" style="text-align:center">Details</th>
+				<th class="table-info" style="text-align:center">Debit</th>
+				<th class="table-info" style="text-align:center">Credit</th>
+				<th class="table-info" style="text-align:center">Balance</th>
+				<!-- <th style="text-align:center">Credit/Debit From/To</th>
+				<th style="text-align:center">From/To Account Number</th>
+				<th style="text-align:center">Transaction Id</th> -->
+			</tr>
+		</thead>
+		<tbody>
+{% csrf_token %}
+		{% for i in history reversed%}
+			<tr>
+				<!--<td style="text-align:center">{{YourAccountNumber}}</td>-->
+				<!-- <td style="text-align:center">{{i.Name}}</td>
+				<td style="text-align:center">{{i.accountNumber}}</td>
+				<td style="text-align:center">{{i.TransactionID}}</td> -->
+				{% if i.TransactionAmount < 0%}
+					<td class="table-danger" style="text-align:center">{{i.date}}</td>
+					<td class="table-danger" style="text-align:center">Transfer To Account Number-{{i.accountNumber}}<br/>{{i.TransactionID}}/{{i.Name}} </td>
+					<td class="table-danger" style="text-align:center">{{i.TransactionAmount}}</td>
+					<td class="table-danger" style="text-align:center">-</td>
+					<td class="table-danger" style="text-align:center">{{i.Balance}}</td>
+					<!-- <td style="text-align:center">{{i.Amount}}</td> -->
+				{%else%}
+					<td class="table-success" style="text-align:center">{{i.date}}</td>
+					<td class="table-success" style="text-align:center">Transfer from Account Number-{{i.accountNumber}}<br/>{{i.TransactionID}}/{{i.Name}} </td>
+					<td class="table-success" style="text-align:center">-</td>
+					<td class="table-success" style="text-align:center">{{i.TransactionAmount}}</td>
+					<td class="table-success" style="text-align:center">{{i.Balance}}</td>
+					<!-- <td style="text-align:center">{{i.Amount}}</td> -->
+				{% endif %}
+			</tr>
+		{% endfor %}
+		</tbody>
+  </table>
+  {% endif %}
+</div>
+{% endblock %}

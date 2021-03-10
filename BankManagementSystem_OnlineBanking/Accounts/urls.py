@@ -11,4 +11,8 @@ urlpatterns=[
     path('delsession',views.delsession,name='delsession'),
     path('viewBalance',views.viewBalance,name='viewBalance'),
     path('makeTransaction',views.makeTransaction,name='makeTransaction'),
+	path('send_email',views.send_email,name='send_email'),
+    path('giveIssue',views.giveIssue,name='giveIssue'),
+    path('contactus',views.contactus,name='contactus'),
+    path('transactionHistory',views.transactionHistory,name='transactionHistory'),
 ]
