@@ -91,6 +91,6 @@ def createAccount(request):
         request.session['accNo']=AccountNo
         request.session['key']=key
         
-        return redirect('/Accounts/AccNoDisplay')
+        return redirect('/Accounts/send_email')
     return render(request,'CreateAccount.html')
     

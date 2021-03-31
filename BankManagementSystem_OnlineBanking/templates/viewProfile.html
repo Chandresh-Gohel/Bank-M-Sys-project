@@ -1,0 +1,78 @@
+{% extends 'base.html' %}
+{% block title %}Profile{% endblock %}
+
+{% block button %}
+<li class="nav-item">
+  <a class="nav-link" href="#">Services</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/Accounts/giveIssue">Contact us</a>
+</li>
+{% endblock %}
+
+{% block functionality %}
+<br>
+<h3 align="center">Profile</h3>
+<hr>
+
+
+<div class="container" style="width: 600px;">
+<form class="row g-3" action="/Accounts/viewProfile" method="POST">
+{% csrf_token %}
+
+ {% for msg in messages %}
+ <h5 align="center"><strong><font style="color: rgb(48, 243, 9);">{{msg}}</font></strong></h5><br>
+ {% endfor %}
+
+
+  <div class="col-md-6">
+    <label for="username" class="form-label">Account Holder</label>
+    <input type="text" class="form-control" name="inputUserName" id="inputUserName" value="{{user.name}}" readonly>
+  </div>
+
+  <div class="col-md-6">
+    <label for="accountnumber" class="form-label">Account Number</label>
+    <input type="" class="form-control" name="inputaccountnumber" id="inputaccountnumber" value="{{user.accountNo}}" readonly>
+  </div>
+
+
+  <div class="col-md-6">
+    <label for="IFSC_code" class="form-label">IFSC_code</label>
+    <input type="" class="form-control" name="inputIFSC_code" id="inputIFSC_code" value="{{user.IFSC_code}}" readonly>
+  </div>
+
+  <div class="col-md-6">
+    <label for="AadharNo" class="form-label">AadharCard No</label>
+    <input type="" class="form-control" name="inputAadharNo" id="inputAadharNo" value="{{user.AadharNo}}" readonly>
+  </div>
+
+
+  <div class="col-md-6">
+    <label for="BirthDate" class="form-label">Birth Date</label>
+    <input type="" class="form-control" name="inputBirthDate" id="inputBirthDater" value="{{user.BirthDate}}" readonly>
+  </div>
+
+  <div class="col-md-6">
+    <label for="inputEmail4" class="form-label">Email</label>
+    <input type="email" class="form-control" name="inputEmail" id="inputEmail" value="{{Email}}" >
+  </div>
+
+  <div class="col-md-6">
+    <label for="mobilenumber" class="form-label">Mobile Number</label>
+    <input type="" class="form-control" name="inputmobile" id="inputmobile" value="{{user.mobileNo}}" >
+  </div>
+
+  <div class="col-12">
+    <label for="inputAddress" class="form-label">Address</label>
+  <textarea class="form-control" name="inputAddress" id="inputAddress" >{{user.homeAddress}}</textarea>
+  </div>
+ 
+    
+  <div class="col-12">
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </div>
+
+</form>
+</div>
+{% endblock %}
+

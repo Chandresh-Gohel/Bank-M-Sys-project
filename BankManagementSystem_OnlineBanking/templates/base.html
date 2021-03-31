@@ -34,16 +34,13 @@
           <li class="nav-item">
             <a class="nav-link active" aria-current="page" href="/Accounts/home">Home</a>
           </li>
-
-
           {% block button %}
           {% endblock %}
         </ul>
 
         <ul class="navbar-nav mr-auto">
-          <li class="nav-item ">
-            <button type="button" class="btn btn-outline-Dark text-light mx-4">View Profile</button>
-          </li>
+          {% block button2 %}
+          {% endblock %}
           <li class="nav-item">
             <button type="button" class="btn btn-light" onclick="window.location.href='/logout'">Log out</button>
           </li>

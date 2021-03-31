@@ -1,0 +1,77 @@
+{% extends 'base.html' %}
+{% block title %}Contact Us{% endblock %}
+
+{% block button %}
+<li class="nav-item">
+  <a class="nav-link" href="#">Services</a>
+</li>
+{% endblock %}
+
+{% block button2 %}
+<li class="nav-item ">
+  <button type="button" class="btn btn-outline-Dark text-light mx-4" onclick="window.location.href='/Accounts/viewProfile'">View Profile</button>
+</li>
+{% endblock %}
+
+
+{% block functionality %}
+<br>
+<h3 align="center">We are always here for you :)</h3>
+<hr>
+<div class="container" style="width: 600px;">
+  
+<form class="row g-3" action="/Accounts/contactus" method="post">
+{% csrf_token %}
+  <div class="col-md-6">
+    <label for="username" class="form-label">Account Holder</label>
+    <input type="text" class="form-control" name="inputUserName" id="inputUserName" value="{{username}}" readonly>
+  </div>
+
+  <div class="col-md-6">
+    <label for="accountnumber" class="form-label">Account Number</label>
+    <input type="" class="form-control" name="inputaccountnumber" id="inputaccountnumber" value="{{useraccountnumber}}" readonly>
+  </div>
+
+  <div class="col-md-6">
+    <label for="inputEmail4" class="form-label">Email</label>
+    <input type="email" class="form-control" name="inputEmail" id="inputEmail" value="{{useremail}}" readonly>
+  </div>
+
+  <div class="col-md-6">
+    <label for="mobilenumber" class="form-label">Mobile Number</label>
+    <input type="" class="form-control" name="inputmobile" id="inputmobile" value="{{usermobile}}" readonly>
+  </div>
+  
+  <div class="col-12">
+    <label for="isssue" class="form-label">What's an issue with you</label>
+  <fieldset class="row mb-3">
+    <legend class="col-form-label col-sm-2 pt-0">Issue With</legend>
+    <div class="col-sm-10">
+      <div class="form-check">
+        <input class="form-check-input" type="radio" name="issuewith" id="issuewith1" value="Account" checked>
+        <label class="form-check-label" for="issuewith1">
+          Account
+        </label>
+      </div>
+      <div class="form-check">
+        <input class="form-check-input" type="radio" name="issuewith" id="issuewith2" value="Services">
+        <label class="form-check-label" for="issuewith2">
+          Services
+        </label>
+      </div>
+    </div>
+
+  </fieldset>
+  <textarea class="form-control" name="userIssue" id="inputIssue" placeholder="Enter Your Issue"></textarea>
+  </div>
+  <div class="col-md-4">
+    <label for="inputZip" class="form-label">Postal Zip</label>
+    <input type="text" class="form-control" name="inputZip" id="inputZip" maxlength="6">
+  </div>
+  
+  <div class="col-12">
+    <button type="submit" class="btn btn-primary">Submit Issue</button>
+  </div>
+</form>
+</div>
+{% endblock %}
