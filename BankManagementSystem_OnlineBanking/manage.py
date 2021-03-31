@@ -3,7 +3,7 @@
 import os
 import sys
 from django.core.management.commands.runserver import Command as runserver
-runserver.default_port = "9040"
+runserver.default_port = "8080"
 
 
 def main():
