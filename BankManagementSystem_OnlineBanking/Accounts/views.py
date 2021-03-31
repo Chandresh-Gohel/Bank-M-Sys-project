@@ -168,9 +168,9 @@ def giveIssue(request):
     username=user.name
     useraccountnumber=user.accountNo
     usermobile=user.mobileNo
-    #useremail=user.email
+    useremail= (User.objects.get(id=request.user.id)).email
     useraddress=user.homeAddress
-    userdata={'username':username,'useraccountnumber':useraccountnumber,'usermobile':usermobile,'useraddress':useraddress}
+    userdata={'username':username,'useraccountnumber':useraccountnumber,'usermobile':usermobile,'useremail':useremail ,'useraddress':useraddress}
     return render(request, 'contactus.html',userdata)
 
 def contactus(request):
