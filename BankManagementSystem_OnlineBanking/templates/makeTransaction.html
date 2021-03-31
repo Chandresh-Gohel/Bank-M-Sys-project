@@ -8,10 +8,17 @@
   <a class="nav-link" href="#">Services</a>
 </li>
 <li class="nav-item">
-  <a class="nav-link" href="#">Contect us</a>
+  <a class="nav-link" href="/Accounts/giveIssue">Contact us</a>
 </li>
 </ul>
 {% endblock %}
+
+{% block button2 %}
+<li class="nav-item ">
+  <button type="button" class="btn btn-outline-Dark text-light mx-4" onclick="window.location.href='/Accounts/viewProfile'">View Profile</button>
+</li>
+{% endblock %}
+
 
 {% block functionality %}
 <br>
@@ -57,8 +64,15 @@
     <div class="form-group">
       <label for="TransactionAmount">Amount</label>
       <input type="number" name="TransactionAmount" class="form-control" id="TransactionAmount"
-        placeholder="Enter Amount to Transfer*" required>
+        placeholder="Enter Amount to Transfer*" min="1" max="99999" required>
     </div><br>
+
+    <div class="form-group">
+      <label for="password">Password</label>
+      <input type="password" name="password" class="form-control" id="password"
+        placeholder="Enter your login password*"  required>
+    </div><br>
+
     <div class="form-group form-check">
       <input type="checkbox" class="form-check-input" id="exampleCheck1">
       <label class="form-check-label" for="exampleCheck1">Accept Term & Condition</label>
