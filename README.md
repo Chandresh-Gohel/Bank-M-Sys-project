@@ -6,7 +6,7 @@ Manage Accounts Done
 
 Manage Transaction Done
 
-# Required:
+# Requirements:
 
 Python Django Mathfilter
 
