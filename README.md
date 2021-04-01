@@ -4,4 +4,10 @@ Userlogin Done
 
 Manage Accounts Done
 
-Manage Transaction "OnGoing"
+Manage Transaction Done
+
+# Required:
+
+Python Django Mathfilter
+
+Python Decouple
